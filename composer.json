@@ -1,0 +1,13 @@
+{
+  "name": "kdyckgre/328/dating",
+  "authors":[
+    {
+      "name": "Kianna Dyck",
+      "email": "kdyck@mail.greenriver.edu"
+    }
+
+  ],
+  "require":{
+    "bcosca/fatfree-core":"dev-master"
+  }
+}
