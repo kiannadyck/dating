@@ -1,4 +1,10 @@
 <?php
+/*
+ * Kianna Dyck
+ * 01/19/2018
+ * This is the controller for my dating website.
+ */
+
 // Require the autoload file
 require_once('vendor/autoload.php');
 
@@ -6,7 +12,7 @@ require_once('vendor/autoload.php');
 $f3 = Base::instance();
 
 // Set debug level 0 = off, 3 = max level
-$f3->set('DEBUG', 3);
+//$f3->set('DEBUG', 3);
 
 // Define a default route
 $f3->route('GET /', function() {
