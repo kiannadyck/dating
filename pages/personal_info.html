@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Tab Title</title>
+    <title>Personal Information</title>
 
     <!-- CSS Files-->
     <!-- Bootstrap-->
@@ -16,7 +16,53 @@
 
 <body>
 <div class="container">
+    <form action="./profile" method="post">
+        <div class="form-row">
+            <div class="col-8">
+                <fieldset class="form-group">
+                    <legend>Personal Information</legend>
+                        <label class="form-control-label" for="firstName">First Name</label>
+                        <input class="form-control" type="text" name="firstName" id="firstName" value="Sarah">
 
+                        <label class="form-control-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" value="Smith">
+
+                        <label class="form-control-label" for="age">Age</label>
+                        <input class="form-control" type="text" name="age" id="age" value="30">
+
+                        <label class="form-control-label">Gender</label> <br>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="male" value="Male">
+                            <label class="form-check-label pr-4" for="male">Male</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="female" value="Female">
+                            <label class="form-check-label pr-4" for="female">Female</label>
+                        </div>
+
+                        <br>
+
+                        <label class="form-control-label" for="phone">Phone Number</label>
+                        <input class="form-control" type="text" name="phone" id="phone" value="222-333-4444">
+                </fieldset>
+            </div> <!-- column 1, the forms -->
+
+            <div class="col-4 mt-4">
+                <div class="mt-5 p-2 bg-light rounded">
+                    <p class="text-center">All information entered is protected by our <span class="text-info">privacy policy</span>. Profile information
+                    can only by viewed by others with your permission.</p>
+                </div>
+            </div> <!-- column 2, side note -->
+
+        </div> <!-- row -->
+
+        <div class="text-right">
+            <button class="btn btn-info">Next ></button>
+        </div> <!-- button div -->
+
+    </form> <!-- form -->
 </div> <!-- container -->
 
 
