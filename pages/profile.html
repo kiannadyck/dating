@@ -14,9 +14,61 @@
 
 </head>
 
-<body>
-<div class="container">
+<!-- Navigation Bar -->
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="./../">K's Dating Website</a>
+</nav>
 
+<!-- Main Content -->
+<body>
+<div class="container border rounded p-4">
+    <form action="./profile" method="post">
+        <h3>Profile</h3>
+        <hr>
+        <div class="form-row">
+            <div class="col-6">
+                <fieldset class="form-group">
+                    <legend class="sr-only">Profile Information</legend>
+                    <!-- Email -->
+                    <label class="form-control-label" for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email" value="my_email@gmail.com">
+
+                    <label class="form-control-label" for="state">State</label>
+                    <select class="form-control" name="state" id="state">
+                        <option>--Select--</option>
+                    </select>
+
+                    <!-- Seeking Gender -->
+                    <label class="form-control-label">Seeking</label> <br>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="maleHuman" value="Male">
+                        <label class="form-check-label pr-4" for="maleHuman">Male</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="femaleHuman" value="Female">
+                        <label class="form-check-label pr-4" for="femaleHuman">Female</label>
+                    </div>
+
+                    <br>
+
+                </fieldset>
+            </div> <!-- column 1, the forms -->
+
+            <!-- Biography -->
+            <div class="col-6 form-group">
+                <label for="bio">Biography</label>
+                <textarea class="form-control" id="bio" rows="6">jsklfjsdlfjsdfkljsdkljf</textarea>
+            </div> <!-- column 2, side note -->
+
+        </div> <!-- row -->
+
+        <div class="text-right">
+            <input type="submit" name="submit" class="btn btn-info" value="Next >">
+        </div> <!-- button div -->
+
+    </form> <!-- form -->
 </div> <!-- container -->
 
 
