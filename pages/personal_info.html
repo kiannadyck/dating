@@ -14,22 +14,34 @@
 
 </head>
 
+<!-- Navigation Bar -->
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="./../">K's Dating Website</a>
+</nav>
+
+<!-- Main Content -->
 <body>
-<div class="container">
+<div class="container border rounded p-4">
     <form action="./profile" method="post">
+        <h3>Personal Information</h3>
+        <hr>
         <div class="form-row">
             <div class="col-8">
                 <fieldset class="form-group">
-                    <legend>Personal Information</legend>
+                    <legend class="sr-only">Personal Information</legend>
+                        <!-- First Name -->
                         <label class="form-control-label" for="firstName">First Name</label>
                         <input class="form-control" type="text" name="firstName" id="firstName" value="Sarah">
 
+                        <!-- Last Name -->
                         <label class="form-control-label" for="lastName">Last Name</label>
                         <input class="form-control" type="text" name="lastName" id="lastName" value="Smith">
 
+                        <!-- Age -->
                         <label class="form-control-label" for="age">Age</label>
                         <input class="form-control" type="text" name="age" id="age" value="30">
 
+                        <!-- Gender -->
                         <label class="form-control-label">Gender</label> <br>
 
                         <div class="form-check form-check-inline">
@@ -44,14 +56,16 @@
 
                         <br>
 
+                        <!-- Phone Number -->
                         <label class="form-control-label" for="phone">Phone Number</label>
                         <input class="form-control" type="text" name="phone" id="phone" value="222-333-4444">
                 </fieldset>
             </div> <!-- column 1, the forms -->
 
-            <div class="col-4 mt-4">
-                <div class="mt-5 p-2 bg-light rounded">
-                    <p class="text-center">All information entered is protected by our <span class="text-info">privacy policy</span>. Profile information
+            <!-- Side Note -->
+            <div class="col-4 mt-2">
+                <div class="mt-4 p-2 bg-light rounded">
+                    <p class="text-center"><span class="font-weight-bold">Note: </span>All information entered is protected by our <span class="text-info">privacy policy</span>. Profile information
                     can only by viewed by others with your permission.</p>
                 </div>
             </div> <!-- column 2, side note -->
@@ -59,7 +73,7 @@
         </div> <!-- row -->
 
         <div class="text-right">
-            <button class="btn btn-info">Next ></button>
+            <input type="submit" name="submit" class="btn btn-info" value="Next >">
         </div> <!-- button div -->
 
     </form> <!-- form -->
