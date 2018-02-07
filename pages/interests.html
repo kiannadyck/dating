@@ -24,54 +24,18 @@
     <form action="./profile-summary" method="post">
         <h3>Interests</h3>
         <hr>
-
             <fieldset class="form-group">
             <legend class="small font-weight-bold">In-door Interests</legend>
                 <!-- columns -->
                 <div class="form-row">
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 1 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 2 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 3 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 4 -->
+                    <repeat group="{{ @indoorCheckboxes }}" value="{{ @indoorInterest }}">
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="{{ @indoorInterest }}" value="{{ @indoorInterest }}">
+                                <label class="form-check-label ml-3" for="{{ @indoorInterest }}"> {{ @indoorInterest }}</label>
+                            </div>
+                        </div>
+                    </repeat>
                 </div> <!-- row -->
             </fieldset>
 
@@ -81,43 +45,14 @@
             <legend class="small font-weight-bold">Out-door Interests</legend>
             <!-- columns -->
             <div class="form-row">
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
+                <repeat group="{{ @outdoorCheckboxes }}" value="{{ @outdoorInterest }}">
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="{{ @outdoorInterest }}" value="{{ @outdoorInterest }}">
+                            <label class="form-check-label ml-3" for="{{ @outdoorInterest }}"> {{ @outdoorInterest }}</label>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 1 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="puzzles" value="puzzles">
-                        <label class="form-check-label ml-3" for="puzzles">puzzles</label>
-                    </div>
-                </div> <!-- Column 2 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-
-                </div> <!-- Column 3 -->
-
-                <div class="col-3">
-                    <div class="form-check">
-                        <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="tv" value="tv">
-                        <label class="form-check-label ml-3" for="tv">tv</label>
-                    </div>
-
-                </div> <!-- Column 4 -->
+                </repeat>
             </div> <!-- row -->
         </fieldset>
 

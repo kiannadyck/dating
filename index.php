@@ -36,8 +36,17 @@ $f3->route('POST /profile', function() {
 });
 
 // Define route for Interests Page
-$f3->route('POST /interests', function() {
-//    echo '<h1>Testing</h1>';
+$f3->route('POST /interests', function($f3) {
+
+    // define indoor interests array
+    $f3->set('indoorCheckboxes', array('tv', 'movies',
+        'cooking', 'board games', 'puzzles', 'reading',
+        'playing cards', 'video games'));
+
+    // define outdoor interests array
+    $f3->set('outdoorCheckboxes', array('hiking', 'biking',
+        'swimming', 'collecting', 'walking', 'climbing'));
+
     $template = new Template();
     echo $template->render('pages/interests.html');
 });
