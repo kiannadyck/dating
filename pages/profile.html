@@ -34,8 +34,13 @@
                     <input class="form-control" type="text" name="email" id="email" value="my_email@gmail.com">
 
                     <label class="form-control-label" for="state">State</label>
+
                     <select class="form-control" name="state" id="state">
                         <option>--Select--</option>
+                    <repeat group="{{ @stateNames }}" key="{{ @key }}" value="{{ @value }}">
+                        <option name="{{ @key }}">{{ @value }}</option>
+                    </repeat>
+
                     </select>
 
                     <!-- Seeking Gender -->
@@ -59,7 +64,7 @@
             <!-- Biography -->
             <div class="col-6 form-group">
                 <label for="bio">Biography</label>
-                <textarea class="form-control" id="bio" rows="6">jsklfjsdlfjsdfkljsdkljf</textarea>
+                <textarea class="form-control" id="bio" name="bio" rows="6">jsklfjsdlfjsdfkljsdkljf</textarea>
             </div> <!-- column 2, side note -->
 
         </div> <!-- row -->
