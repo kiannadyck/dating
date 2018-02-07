@@ -22,7 +22,7 @@
 <!-- Main Content -->
 <body>
 <div class="container border rounded p-4">
-    <form action="./profile" method="post">
+    <form action="#" method="post">
         <h3>Personal Information</h3>
         <hr>
         <div class="form-row">
@@ -31,26 +31,46 @@
                     <legend class="sr-only">Personal Information</legend>
                         <!-- First Name -->
                         <label class="form-control-label" for="firstName">First Name</label>
-                        <input class="form-control" type="text" name="firstName" id="firstName" value="Sarah">
+                        <input class="form-control" type="text" name="firstName" id="firstName" value="{{ @fName }}">
+
+                        <div>
+                            <check if="{{isset (@errors['first']) }}">
+                                <p>{{ @errors['first'] }}</p>
+                            </check>
+                        </div>
 
                         <!-- Last Name -->
                         <label class="form-control-label" for="lastName">Last Name</label>
-                        <input class="form-control" type="text" name="lastName" id="lastName" value="Smith">
+                        <input class="form-control" type="text" name="lastName" id="lastName" value="{{ @lName }}">
+
+                        <div>
+                            <check if="{{isset (@errors['last']) }}">
+                                <p>{{ @errors['last'] }}</p>
+                            </check>
+                        </div>
 
                         <!-- Age -->
                         <label class="form-control-label" for="age">Age</label>
-                        <input class="form-control" type="text" name="age" id="age" value="30">
+                        <input class="form-control" type="text" name="age" id="age" value="{{ @age }}">
+
+                        <div>
+                            <check if="{{isset (@errors['age']) }}">
+                                <p>{{ @errors['age'] }}</p>
+                            </check>
+                        </div>
 
                         <!-- Gender -->
                         <label class="form-control-label">Gender</label> <br>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="male" value="Male">
+                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="male" value="Male"
+                            <check if="{{@gender == Male}}">checked='checked'</check>>
                             <label class="form-check-label pr-4" for="male">Male</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="female" value="Female">
+                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="female" value="Female"
+                            <check if="{{@gender == Female}}">checked='checked'</check>>
                             <label class="form-check-label pr-4" for="female">Female</label>
                         </div>
 
@@ -58,7 +78,13 @@
 
                         <!-- Phone Number -->
                         <label class="form-control-label" for="phone">Phone Number</label>
-                        <input class="form-control" type="text" name="phone" id="phone" value="222-333-4444">
+                        <input class="form-control" type="text" name="phone" id="phone" value="{{ @phone }}">
+
+                        <div>
+                            <check if="{{isset (@errors['phone']) }}">
+                                <p>{{ @errors['phone'] }}</p>
+                            </check>
+                        </div>
                 </fieldset>
             </div> <!-- column 1, the forms -->
 

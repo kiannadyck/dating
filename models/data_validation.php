@@ -7,7 +7,7 @@
  */
 function validName($name)
 {
-    return ctype_alpha($name);
+    return !empty($name) && ctype_alpha($name);
 }
 
 /**
@@ -17,7 +17,7 @@ function validName($name)
  */
 function validAge($age)
 {
-    return is_numeric($age) && $age >= 18;
+    return !empty($age) && is_numeric($age) && $age >= 18;
 }
 
 /**
@@ -55,17 +55,44 @@ function validPhone($phone)
 /**
  * Function checks each selected outdoor interest against a list of valid options.
  * @param $interests Outdoor interests selected by client
+ * @return bool
  */
 function validOutdoor($interests)
 {
+    if (!empty($interests)) {
+        global $f3;
 
+        foreach ($interests as $interest) {
+            if (!in_array($interest, $f3->get('outdoorCheckboxes'))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    return true;
 }
 
 /**
  * Function checks each selected indoor interest against a list of valid options.
  * @param $interests Indoor interests selected by the client.
+ * @return bool
  */
 function validIndoor($interests)
 {
+    if (!empty($interests)) {
+        global $f3;
+
+        foreach ($interests as $interest) {
+            if (!in_array($interest, $f3->get('indoorCheckboxes'))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    return true;
 
 }
