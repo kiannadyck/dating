@@ -31,14 +31,15 @@
                     <legend class="sr-only">Profile Information</legend>
                     <!-- Email -->
                     <label class="form-control-label" for="email">Email</label>
-                    <input class="form-control" type="text" name="email" id="email" value="my_email@gmail.com">
+                    <input class="form-control" type="text" name="email" id="email" value="{{ @email }}">
 
                     <label class="form-control-label" for="state">State</label>
 
                     <select class="form-control" name="state" id="state">
                         <option>--Select--</option>
                     <repeat group="{{ @stateNames }}" key="{{ @key }}" value="{{ @value }}">
-                        <option name="{{ @key }}">{{ @value }}</option>
+                        <option name="{{ @key }}"
+                        <check if="{{ @value == @state}}">selected</check>>{{ @value }}</option>
                     </repeat>
 
                     </select>
@@ -47,12 +48,14 @@
                     <label class="form-control-label">Seeking</label> <br>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="maleHuman" value="Male">
+                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="maleHuman" value="Male"
+                        <check if="{{@seeking == Male}}">checked='checked'</check>>
                         <label class="form-check-label pr-4" for="maleHuman">Male</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="femaleHuman" value="Female">
+                        <input class="form-check-input ml-0 mt-2" type="radio" name="seeking" id="femaleHuman" value="Female"
+                        <check if="{{@seeking == Female}}">checked='checked'</check>>
                         <label class="form-check-label pr-4" for="femaleHuman">Female</label>
                     </div>
 
@@ -64,7 +67,7 @@
             <!-- Biography -->
             <div class="col-6 form-group">
                 <label for="bio">Biography</label>
-                <textarea class="form-control" id="bio" name="bio" rows="6">jsklfjsdlfjsdfkljsdkljf</textarea>
+                <textarea class="form-control" id="bio" name="bio" rows="6">{{ @bio }}</textarea>
             </div> <!-- column 2, side note -->
 
         </div> <!-- row -->

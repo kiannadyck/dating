@@ -96,11 +96,13 @@ $f3->route('GET|POST /personal-info', function($f3) {
 $f3->route('GET|POST /profile', function($f3) {
 
     if(isset($_POST['submit'])) {
+        $email = $_POST['email'];
         $state = $_POST['state'];
         $seeking = $_POST['seeking'];
         $bio = $_POST['bio'];
 
         // set hive variables (used for sticky forms and displaying error messages)
+        $f3->set('email', $email);
         $f3->set('state', $state);
         $f3->set('seeking', $seeking);
         $f3->set('bio', $bio);
