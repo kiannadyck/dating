@@ -31,7 +31,8 @@
                     <repeat group="{{ @indoorCheckboxes }}" value="{{ @indoorInterest }}">
                         <div class="col-3">
                             <div class="form-check">
-                                <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="{{ @indoorInterest }}" value="{{ @indoorInterest }}">
+                                <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="{{ @indoorInterest }}" value="{{ @indoorInterest }}"
+                                <check if="{{ in_array(@indoorInterest, @userIndoor)}}">checked='checked'</check>>{{ @value }}
                                 <label class="form-check-label ml-3" for="{{ @indoorInterest }}"> {{ @indoorInterest }}</label>
                             </div>
                         </div>
@@ -53,7 +54,8 @@
                 <repeat group="{{ @outdoorCheckboxes }}" value="{{ @outdoorInterest }}">
                     <div class="col-3">
                         <div class="form-check">
-                            <input class="form-check-input ml-3 mt-2" type="checkbox" name="outdoorInterests[]" id="{{ @outdoorInterest }}" value="{{ @outdoorInterest }}">
+                            <input class="form-check-input ml-3 mt-2" type="checkbox" name="outdoorInterests[]" id="{{ @outdoorInterest }}" value="{{ @outdoorInterest }}"
+                            <check if="{{ in_array(@outdoorInterest, @userOutdoor)}}">checked='checked'</check>>
                             <label class="form-check-label ml-3" for="{{ @outdoorInterest }}"> {{ @outdoorInterest }}</label>
                         </div>
                     </div>
