@@ -1,5 +1,8 @@
 <?php
-
+/* Kianna Dyck
+ * 02/03/2018
+ * This file contains data validation functions.
+ */
 /**
  * Function checks to see that a string is all alphabetic
  * @param $name Name entered in the form by the client.

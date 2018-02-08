@@ -55,12 +55,12 @@ $f3->route('GET|POST /personal-info', function($f3) {
 
         if (!validAge($age))
         {
-            $errors['age'] = "Please enter a valid age.";
+            $errors['age'] = "Age must be 18 or older to be considered eligible for K's Dating Website services.";
         }
 
         if (!validPhone($phone))
         {
-            $errors['phone'] = "Please enter a valid phone number.";
+            $errors['phone'] = "Please enter a valid 10 digit phone number, no parentheses or spaces, hyphens optional.";
         }
 
         // Initialize a $success variable, true if $errors array is true, false otherwise
@@ -118,7 +118,12 @@ $f3->route('GET|POST /profile', function($f3) {
 
         // set session variables with form data
         $_SESSION['email'] = $f3->get('email');
-        $_SESSION['state'] = $f3->get('state');
+        if ($state == "--Select--") {
+            $_SESSION['state'] = "";
+        } else {
+            $_SESSION['state'] = $f3->get('state');
+        }
+
         $_SESSION['seeking'] = $f3->get('seeking');
         $_SESSION['bio'] = $f3->get('bio');
 
@@ -171,11 +176,11 @@ $f3->route('GET|POST /interests', function($f3) {
         $errors = array();
 
         if(!validIndoor($userIndoorInterests)) {
-            $errors['indoor'] = "Please select a valid indoor interest.";
+            $errors['indoor'] = "Please only select valid indoor interests.";
         }
 
         if(!validOutdoor($userOutdoorInterests)) {
-            $errors['outdoor'] = "Please select a valid outdoor interest.";
+            $errors['outdoor'] = "Please only select valid outdoor interests.";
         }
 
         // Initialize a $success variable, true if $errors array is true, false otherwise

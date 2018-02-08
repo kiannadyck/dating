@@ -4,7 +4,29 @@
     This stylesheet contains styles for my dating website.
 */
 
-/* Image styles */
-img {
+/* Home Page */
+img#homeImg {
     width: 100%;
+}
+
+#sideNote {
+    border: 2px #ced4da solid;
+}
+
+/* Summary Page */
+img.card-img-top#profileImg {
+    width: 70%;
+    margin: auto;
+}
+
+/* General Styles */
+
+/* Label Styles */
+label.form-control-label {
+    font-weight: bold;
+}
+
+/* Form Styles */
+input.form-control {
+    margin-bottom: 1.25rem;
 }

@@ -6,20 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Tab Title</title>
+    <title>Profile Summary</title>
 
     <!-- CSS Files-->
-    <!-- Bootstrap-->
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- External CSS -->
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
 
 </head>
 
+<body>
 <!-- Navigation Bar -->
 <nav class="navbar navbar-light bg-light mb-2">
     <a class="navbar-brand" href="./">K's Dating Website</a>
 </nav>
 
-<body>
 <div class="container border rounded p-4">
 <div class="row">
     <div class="col-6">
@@ -46,7 +48,7 @@
 
     <div class="col-6">
         <div class="card border-0">
-            <img class="card-img-top" src="images/profile-img.png" alt="profile image">
+            <img class="card-img-top" id="profileImg" src="images/profile-img.png" alt="profile image">
             <div class="card-body">
                 <h2>Biography</h2>
                 <p>{{ @bio }}</p>
