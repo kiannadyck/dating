@@ -149,9 +149,6 @@ $f3->route('GET|POST /interests', function($f3) {
     $f3->set('outdoorCheckboxes', array('hiking', 'biking',
         'swimming', 'collecting', 'walking', 'climbing'));
 
-    // Array ( [indoorInterests] => Array ( [0] => tv [1] => reading )
-    // [outdoorInterests] => Array ( [0] => biking ) [submit] => Next > )
-
     if(isset($_POST['submit'])) {
         // Store post data in variables
         $userIndoorInterests = $_POST['indoorInterests'];

@@ -25,7 +25,7 @@
         <h3>Interests</h3>
         <hr>
             <fieldset class="form-group">
-            <legend class="small font-weight-bold">In-door Interests</legend>
+            <legend class="small font-weight-bold">Indoor Interests</legend>
                 <!-- columns -->
                 <div class="form-row">
                     <repeat group="{{ @indoorCheckboxes }}" value="{{ @indoorInterest }}">
@@ -39,10 +39,15 @@
                 </div> <!-- row -->
             </fieldset>
 
+            <div>
+                <check if="{{isset (@errors['indoor']) }}">
+                    <p>{{ @errors['indoor'] }}</p>
+                </check>
+            </div>
 
         <!-- Outdoor Interests -->
         <fieldset class="form-group">
-            <legend class="small font-weight-bold">Out-door Interests</legend>
+            <legend class="small font-weight-bold">Outdoor Interests</legend>
             <!-- columns -->
             <div class="form-row">
                 <repeat group="{{ @outdoorCheckboxes }}" value="{{ @outdoorInterest }}">
@@ -55,6 +60,12 @@
                 </repeat>
             </div> <!-- row -->
         </fieldset>
+
+        <div>
+            <check if="{{isset (@errors['outdoor']) }}">
+                <p>{{ @errors['outdoor'] }}</p>
+            </check>
+        </div>
 
         <div class="text-right">
             <input type="submit" name="submit" class="btn btn-info" value="Next >">
