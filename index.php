@@ -66,11 +66,20 @@ $f3->route('GET|POST /personal-info', function($f3) {
         // Initialize a $success variable, true if $errors array is true, false otherwise
         $success = sizeof($errors) == 0;
 
+        if (strlen($phone) == 10) {
+            // insert hyphens
+            $areaCode = substr($phone, 0, 3);
+            $secondPart = substr($phone, 3,3);
+            $thirdPart = substr($phone,6,4);
+            $phoneNum = "$areaCode-$secondPart-$thirdPart";
+            $f3->set('phone', $phoneNum);
+        }
+
         // set hive variables (used for sticky forms and displaying error messages)
         $f3->set('fName', $firstName);
         $f3->set('lName', $lastName);
         $f3->set('age', $age);
-        $f3->set('phone', $phone);
+//        $f3->set('phone', $phone);
         $f3->set('gender', $gender);
         $f3->set('errors', $errors);
 
@@ -108,9 +117,10 @@ $f3->route('GET|POST /profile', function($f3) {
         $f3->set('bio', $bio);
 
         // set session variables with form data
-        $_SESSION['fName'] = $f3->get('fName');
-        $_SESSION['lName'] = $f3->get('lName');
-        $_SESSION['age'] = $f3->get('age');
+        $_SESSION['email'] = $f3->get('email');
+        $_SESSION['state'] = $f3->get('state');
+        $_SESSION['seeking'] = $f3->get('seeking');
+        $_SESSION['bio'] = $f3->get('bio');
 
         // reroute to next page
         $f3->reroute('./interests');
@@ -192,8 +202,20 @@ $f3->route('GET|POST /interests', function($f3) {
 });
 
 // Define route for Summary Page
-$f3->route('GET|POST /profile-summary', function() {
+$f3->route('GET|POST /profile-summary', function($f3) {
+    $f3->set('firstName', $_SESSION['fName']);
+    $f3->set('lastName', $_SESSION['lName']);
+    $f3->set('age', $_SESSION['age']);
+    $f3->set('phone', $_SESSION['phone']);
+    $f3->set('gender', $_SESSION['gender']);
 
+    $f3->set('email', $_SESSION['email']);
+    $f3->set('state', $_SESSION['state']);
+    $f3->set('seeking', $_SESSION['seeking']);
+    $f3->set('bio', $_SESSION['bio']);
+
+    $f3->set('interestsIn', $_SESSION['userInterestsIn']);
+    $f3->set('interestsOut', $_SESSION['userInterestsOut']);
 
     $template = new Template();
     echo $template->render('pages/profile_summary.html');

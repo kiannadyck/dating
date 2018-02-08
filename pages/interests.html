@@ -32,7 +32,10 @@
                         <div class="col-3">
                             <div class="form-check">
                                 <input class="form-check-input ml-3 mt-2" type="checkbox" name="indoorInterests[]" id="{{ @indoorInterest }}" value="{{ @indoorInterest }}"
-                                <check if="{{ in_array(@indoorInterest, @userIndoor)}}">checked='checked'</check>>{{ @value }}
+                                <check if="{{!empty (@userIndoor) }}">
+                                    <check if="{{ in_array(@indoorInterest, @userIndoor)}}">checked='checked'</check>
+                                </check>
+                                >{{ @value }}
                                 <label class="form-check-label ml-3" for="{{ @indoorInterest }}"> {{ @indoorInterest }}</label>
                             </div>
                         </div>
@@ -55,7 +58,10 @@
                     <div class="col-3">
                         <div class="form-check">
                             <input class="form-check-input ml-3 mt-2" type="checkbox" name="outdoorInterests[]" id="{{ @outdoorInterest }}" value="{{ @outdoorInterest }}"
-                            <check if="{{ in_array(@outdoorInterest, @userOutdoor)}}">checked='checked'</check>>
+                            <check if="{{!empty (@userOutdoor) }}">
+                                <check if="{{ in_array(@outdoorInterest, @userOutdoor)}}">checked='checked'</check>
+                            </check>
+                            >
                             <label class="form-check-label ml-3" for="{{ @outdoorInterest }}"> {{ @outdoorInterest }}</label>
                         </div>
                     </div>

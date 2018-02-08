@@ -25,14 +25,21 @@
     <div class="col-6">
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: </li>
-                <li class="list-group-item">Gender: </li>
-                <li class="list-group-item">Age: </li>
-                <li class="list-group-item">Phone: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">State: </li>
-                <li class="list-group-item">Seeking: </li>
-                <li class="list-group-item">Interests: </li>
+                <li class="list-group-item">Name: {{ @firstName }} {{ @lastName }}</li>
+                <li class="list-group-item">Gender: {{ @gender }}</li>
+                <li class="list-group-item">Age: {{ @age }}</li>
+                <li class="list-group-item">Phone: {{ @phone }}</li>
+                <li class="list-group-item">Email: {{ @email }}</li>
+                <li class="list-group-item">State: {{ @state }}</li>
+                <li class="list-group-item">Seeking: {{ @seeking }}</li>
+                <li class="list-group-item">Interests:
+                    <repeat group="{{ @interestsIn }}" value="{{ @in }}">
+                        {{ @in }}
+                    </repeat>
+                    <repeat group="{{ @interestsOut }}" value="{{ @out }}">
+                        {{ @out }}
+                    </repeat>
+                </li>
             </ul>
         </div>
     </div> <!-- column 1 -->
@@ -42,9 +49,7 @@
             <img class="card-img-top" src="images/profile-img.png" alt="profile image">
             <div class="card-body">
                 <h2>Biography</h2>
-                <p>Hello, my name is Sarah Smith. I like taking long walks on the beach
-                and drinking mai tais in the sun. My hobbies include underwater basket weaving,
-                photography, and writing poetry...</p>
+                <p>{{ @bio }}</p>
             </div>
         </div>
 
