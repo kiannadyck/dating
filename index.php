@@ -37,6 +37,8 @@ $f3->route('GET|POST /personal-info', function($f3) {
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
 
+        $premium = $_POST['premium']; // added
+
         // include validation file
         include('models/data_validation.php');
 
@@ -82,6 +84,8 @@ $f3->route('GET|POST /personal-info', function($f3) {
 //        $f3->set('phone', $phone);
         $f3->set('gender', $gender);
         $f3->set('errors', $errors);
+
+        $f3->set('premium', $premium); // added
 
         // if no errors in forms
         if($success) {

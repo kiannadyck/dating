@@ -88,6 +88,15 @@
                                 <p>{{ @errors['phone'] }}</p>
                             </check>
                         </div>
+
+                    <!-- Premium Membership -->
+                        <label class="form-control-label">Premium Membership</label> <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input ml-0 mt-2" type="checkbox" name="premium" id="premium" value="premium"
+                            <check if="{{@premium == premium}}">checked='checked'</check>>
+                            <label class="form-check-label pr-4" for="premium">Sign me up for a Premium Account!</label>
+                        </div>
+
                 </fieldset>
             </div> <!-- column 1, the forms -->
 
