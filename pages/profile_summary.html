@@ -27,21 +27,25 @@
     <div class="col-6">
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: {{ @firstName }} {{ @lastName }}</li>
-                <li class="list-group-item">Gender: {{ @gender }}</li>
-                <li class="list-group-item">Age: {{ @age }}</li>
-                <li class="list-group-item">Phone: {{ @phone }}</li>
-                <li class="list-group-item">Email: {{ @email }}</li>
-                <li class="list-group-item">State: {{ @state }}</li>
-                <li class="list-group-item">Seeking: {{ @seeking }}</li>
-                <li class="list-group-item">Interests:
-                    <repeat group="{{ @interestsIn }}" value="{{ @in }}">
-                        {{ @in }}
-                    </repeat>
-                    <repeat group="{{ @interestsOut }}" value="{{ @out }}">
-                        {{ @out }}
-                    </repeat>
-                </li>
+                <li class="list-group-item">Name: {{ @SESSION['user']->getFname() }} {{ @SESSION['user']->getLname() }}</li>
+                <li class="list-group-item">Gender: {{ @SESSION['user']->getGender() }}</li>
+                <li class="list-group-item">Age: {{ @SESSION['user']->getAge() }}</li>
+                <li class="list-group-item">Phone: {{ @SESSION['user']->getPhone() }}</li>
+                <li class="list-group-item">Email: {{ @SESSION['user']->getEmail() }}</li>
+                <li class="list-group-item">State: {{ @SESSION['user']->getState() }}</li>
+                <li class="list-group-item">Seeking: {{ @SESSION['user']->getSeeking() }}</li>
+
+                <check if="{{ @SESSION['user'] instanceof PremiumMember }}">
+                    <li class="list-group-item">Interests:
+                        <repeat group="{{ @interestsIn }}" value="{{ @in }}">
+                            {{ @in }}
+                        </repeat>
+                        <repeat group="{{ @interestsOut }}" value="{{ @out }}">
+                            {{ @out }}
+                        </repeat>
+                    </li>
+                </check>
+
             </ul>
         </div>
     </div> <!-- column 1 -->

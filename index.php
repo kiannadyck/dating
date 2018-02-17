@@ -75,13 +75,14 @@ $f3->route('GET|POST /personal-info', function($f3) {
             $thirdPart = substr($phone,6,4);
             $phoneNum = "$areaCode-$secondPart-$thirdPart";
             $f3->set('phone', $phoneNum);
+        } else {
+            $f3->set('phone', $phone);
         }
 
         // set hive variables (used for sticky forms and displaying error messages)
         $f3->set('fName', $firstName);
         $f3->set('lName', $lastName);
         $f3->set('age', $age);
-//        $f3->set('phone', $phone);
         $f3->set('gender', $gender);
         $f3->set('errors', $errors);
 
@@ -89,12 +90,18 @@ $f3->route('GET|POST /personal-info', function($f3) {
 
         // if no errors in forms
         if($success) {
+            // check if premium is selected
+
+            // create a new member object
+            $user = new Member($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
+            $_SESSION['user'] = $user;
+
             // set session variables with form data
-            $_SESSION['fName'] = $f3->get('fName');
-            $_SESSION['lName'] = $f3->get('lName');
-            $_SESSION['age'] = $f3->get('age');
-            $_SESSION['phone'] = $f3->get('phone');
-            $_SESSION['gender'] = $f3->get('gender');
+//            $_SESSION['fName'] = $f3->get('fName');
+//            $_SESSION['lName'] = $f3->get('lName');
+//            $_SESSION['age'] = $f3->get('age');
+//            $_SESSION['phone'] = $f3->get('phone');
+//            $_SESSION['gender'] = $f3->get('gender');
 
             // reroute to next page
             $f3->reroute('./profile');
@@ -107,6 +114,11 @@ $f3->route('GET|POST /personal-info', function($f3) {
 
 // Define route for profile Page
 $f3->route('GET|POST /profile', function($f3) {
+
+//    print_r($_SESSION['user']);
+    $user = $_SESSION['user'];
+    print_r($user);
+    echo $user->getFname()." ".$user->getLname();
 
     if(isset($_POST['submit'])) {
         $email = $_POST['email'];
@@ -121,15 +133,18 @@ $f3->route('GET|POST /profile', function($f3) {
         $f3->set('bio', $bio);
 
         // set session variables with form data
-        $_SESSION['email'] = $f3->get('email');
+        $user->setEmail($f3->get('email'));
+
+//        $_SESSION['email'] = $f3->get('email');
+
         if ($state == "--Select--") {
-            $_SESSION['state'] = "";
+            $user->setState("");
         } else {
-            $_SESSION['state'] = $f3->get('state');
+            $user->setState($f3->get('state'));
         }
 
-        $_SESSION['seeking'] = $f3->get('seeking');
-        $_SESSION['bio'] = $f3->get('bio');
+        $user->setSeeking($f3->get('seeking'));
+        $user->setBio($f3->get('bio'));
 
         // reroute to next page
         $f3->reroute('./interests');
@@ -158,6 +173,15 @@ $f3->route('GET|POST /profile', function($f3) {
 
 // Define route for Interests Page
 $f3->route('GET|POST /interests', function($f3) {
+
+    $user = $_SESSION['user'];
+
+    if(!$user instanceof PremiumMember) {
+        $f3->reroute('./profile-summary');
+    }
+
+
+    print_r($user);
 
     // define indoor interests array
     $f3->set('indoorCheckboxes', array('tv', 'movies',
@@ -212,7 +236,7 @@ $f3->route('GET|POST /interests', function($f3) {
 
 // Define route for Summary Page
 $f3->route('GET|POST /profile-summary', function($f3) {
-    $f3->set('firstName', $_SESSION['fName']);
+    /*$f3->set('firstName', $_SESSION['fName']);
     $f3->set('lastName', $_SESSION['lName']);
     $f3->set('age', $_SESSION['age']);
     $f3->set('phone', $_SESSION['phone']);
@@ -224,7 +248,7 @@ $f3->route('GET|POST /profile-summary', function($f3) {
     $f3->set('bio', $_SESSION['bio']);
 
     $f3->set('interestsIn', $_SESSION['userInterestsIn']);
-    $f3->set('interestsOut', $_SESSION['userInterestsOut']);
+    $f3->set('interestsOut', $_SESSION['userInterestsOut']);*/
 
     $template = new Template();
     echo $template->render('pages/profile_summary.html');

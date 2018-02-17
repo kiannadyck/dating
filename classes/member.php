@@ -27,10 +27,10 @@ class Member
         function __construct($fname, $lname, $age, $gender, $phone)
         {
             $this->fname = $fname;
-            $this->fname = $lname;
-            $this->fname = $age;
-            $this->fname = $gender;
-            $this->fname = $phone;
+            $this->lname = $lname;
+            $this->age = $age;
+            $this->gender = $gender;
+            $this->phone = $phone;
         }
 
         // Getters and Setters
