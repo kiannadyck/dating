@@ -30,3 +30,7 @@ label.form-control-label {
 input.form-control {
     margin-bottom: 1.25rem;
 }
+
+select.form-control {
+    margin-bottom: 1.25rem;
+}

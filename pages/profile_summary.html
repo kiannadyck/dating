@@ -63,10 +63,17 @@
 
     <div class="col-6">
         <div class="card border-0">
-            <img class="card-img-top" id="profileImg" src="images/profile-img.png" alt="profile image">
+            <img class="card-img-top" id="profileImg" src="images/{{ @src }}" alt="profile image">
             <div class="card-body">
                 <h2>Biography</h2>
                 <p>{{ @SESSION['user']->getBio() }}</p>
+
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <label class="font-weight-bold" for="fileToUpload">Add a Profile Picture</label><br>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" name="submit" value="upload">
+                </form>
+
             </div>
         </div>
 

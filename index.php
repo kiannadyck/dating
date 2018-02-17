@@ -233,11 +233,47 @@ $f3->route('GET|POST /interests', function($f3) {
 $f3->route('GET|POST /profile-summary', function($f3) {
 
     $user = $_SESSION['user'];
+    $src = 'profile-img.png';
 
     if($user instanceof PremiumMember) {
         $f3->set('interestsIn', $_SESSION['user']->getInDoorInterests());
         $f3->set('interestsOut', $_SESSION['user']->getOutDoorInterests());
     }
+
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    $uploadOk = 1;
+
+    if (isset($_POST['upload'])) {
+        if(!empty($_FILES['fileToUpload'])) {
+            $myfile = $_FILES['fileToUpload'];
+
+            if($myfile['error'] > 0) {
+                die('<div class="alert alert-danger" role="alert"> An error occurred while uploading the file </div>');
+            }
+
+            // allow only allow png, jpeg, and jpg extensions
+            if ($imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jpg") {
+                echo "<p>Sorry, only png, jpeg, and jpg files allowed.</p>";
+                $uploadOk = 0;
+            }
+
+            if ($uploadOk == 0) {
+                echo "<p>Sorry, your file was not uploaded.</p>";
+            } else {
+                // try to upload file
+                if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'],
+                    'images/'.$_FILES['fileToUpload']['name'])) {
+                    $src = $_FILES['fileToUpload']['name'];
+                    echo "<p>Your file successfully uploaded!</p>";
+                } else {
+                    echo "<p>There was a problem uploading your file - please try again.</p>";
+                }
+            }
+        }
+
+    }
+
+    $f3->set('src', $src);
 
     $template = new Template();
     echo $template->render('pages/profile_summary.html');
