@@ -37,7 +37,7 @@ $f3->route('GET|POST /personal-info', function($f3) {
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
 
-        $premium = $_POST['premium']; // added
+        $premium = $_POST['premium'];
 
         // include validation file
         include('models/data_validation.php');
@@ -62,7 +62,8 @@ $f3->route('GET|POST /personal-info', function($f3) {
 
         if (!validPhone($phone))
         {
-            $errors['phone'] = "Please enter a valid 10 digit phone number, no parentheses or spaces, hyphens optional.";
+            $errors['phone'] = "Please enter a valid 10 digit phone number, 
+            no parentheses or spaces, hyphens optional.";
         }
 
         // Initialize a $success variable, true if $errors array is true, false otherwise
@@ -86,26 +87,22 @@ $f3->route('GET|POST /personal-info', function($f3) {
         $f3->set('gender', $gender);
         $f3->set('errors', $errors);
 
-        $f3->set('premium', $premium); // added
+        $f3->set('premium', $premium);
 
         // if no errors in forms
         if($success) {
             // check if premium is selected
             if(isset($premium)) {
-                $user = new PremiumMember($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
+                // create a new premium member object
+                $user = new PremiumMember($f3->get(fName),
+                    $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
             } else {
                 // create a new member object
-                $user = new Member($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
+                $user = new Member($f3->get(fName),
+                    $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
             }
 
             $_SESSION['user'] = $user;
-
-            // set session variables with form data
-//            $_SESSION['fName'] = $f3->get('fName');
-//            $_SESSION['lName'] = $f3->get('lName');
-//            $_SESSION['age'] = $f3->get('age');
-//            $_SESSION['phone'] = $f3->get('phone');
-//            $_SESSION['gender'] = $f3->get('gender');
 
             // reroute to next page
             $f3->reroute('./profile');
@@ -119,10 +116,7 @@ $f3->route('GET|POST /personal-info', function($f3) {
 // Define route for profile Page
 $f3->route('GET|POST /profile', function($f3) {
 
-//    print_r($_SESSION['user']);
     $user = $_SESSION['user'];
-    print_r($user);
-    echo $user->getFname()." ".$user->getLname();
 
     if(isset($_POST['submit'])) {
         $email = $_POST['email'];
@@ -136,10 +130,9 @@ $f3->route('GET|POST /profile', function($f3) {
         $f3->set('seeking', $seeking);
         $f3->set('bio', $bio);
 
-        // set session variables with form data
+        // set email, state, seeking, and bio in member/premium member object
         $user->setEmail($f3->get('email'));
 
-//        $_SESSION['email'] = $f3->get('email');
 
         if ($state == "--Select--") {
             $user->setState("");
@@ -180,12 +173,10 @@ $f3->route('GET|POST /interests', function($f3) {
 
     $user = $_SESSION['user'];
 
+    // skip interests page and reroute to summary page if regular member
     if(!$user instanceof PremiumMember) {
         $f3->reroute('./profile-summary');
     }
-
-
-    print_r($user);
 
     // define indoor interests array
     $f3->set('indoorCheckboxes', array('tv', 'movies',
@@ -225,7 +216,7 @@ $f3->route('GET|POST /interests', function($f3) {
 
         // if no errors in forms
         if($success) {
-            // set session variables with form data
+            // set indoor and outdoor interests in premium member object
             $user->setInDoorInterests($f3->get('userIndoor'));
             $user->setOutDoorInterests($f3->get('userOutdoor'));
 

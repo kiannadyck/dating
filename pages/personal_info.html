@@ -1,3 +1,14 @@
+<!--
+    Kianna Dyck
+    02/16/2018
+    http://kdyck.greenriverdev.com/328/dating/personal-info
+    This page presents the user with forms to enter their
+    personal information. These forms include their
+    first name, last name, age, gender and phone number,
+    as well as a checkbox opt-in option to sign up for a
+    premium membership.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +21,9 @@
 
     <!-- CSS Files-->
     <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
     <!-- External CSS -->
     <link href="styles/styles.css" rel="stylesheet" type="text/css">
 
@@ -72,7 +85,8 @@
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="female" value="Female"
+                            <input class="form-check-input ml-0 mt-2" type="radio" name="gender" id="female"
+                                   value="Female"
                             <check if="{{@gender == Female}}">checked='checked'</check>>
                             <label class="form-check-label pr-4" for="female">Female</label>
                         </div>
@@ -92,7 +106,8 @@
                     <!-- Premium Membership -->
                         <label class="form-control-label">Premium Membership</label> <br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input ml-0 mt-2" type="checkbox" name="premium" id="premium" value="premium"
+                            <input class="form-check-input ml-0 mt-2" type="checkbox" name="premium" id="premium"
+                                   value="premium"
                             <check if="{{@premium == premium}}">checked='checked'</check>>
                             <label class="form-check-label pr-4" for="premium">Sign me up for a Premium Account!</label>
                         </div>
@@ -103,8 +118,9 @@
             <!-- Side Note -->
             <div class="col-4 mt-2">
                 <div class="mt-4 p-2 bg-light rounded" id="sideNote">
-                    <p class="text-center"><span class="font-weight-bold">Note: </span>All information entered is protected by our <span class="text-info">privacy policy</span>. Profile information
-                    can only by viewed by others with your permission.</p>
+                    <p class="text-center"><span class="font-weight-bold">Note: </span>All information entered is
+                        protected by our <span class="text-info">privacy policy</span>. Profile information can only
+                        be viewed by others with your permission.</p>
                 </div>
             </div> <!-- column 2, side note -->
 
@@ -120,11 +136,17 @@
 
 <!-- Scripts -->
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 <!-- popper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
 <!-- bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
 </body>
 
