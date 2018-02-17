@@ -232,8 +232,12 @@ $f3->route('GET|POST /interests', function($f3) {
 // Define route for Summary Page
 $f3->route('GET|POST /profile-summary', function($f3) {
 
-    $f3->set('interestsIn', $_SESSION['user']->getInDoorInterests());
-    $f3->set('interestsOut', $_SESSION['user']->getOutDoorInterests());
+    $user = $_SESSION['user'];
+
+    if($user instanceof PremiumMember) {
+        $f3->set('interestsIn', $_SESSION['user']->getInDoorInterests());
+        $f3->set('interestsOut', $_SESSION['user']->getOutDoorInterests());
+    }
 
     $template = new Template();
     echo $template->render('pages/profile_summary.html');
