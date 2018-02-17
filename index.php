@@ -91,9 +91,13 @@ $f3->route('GET|POST /personal-info', function($f3) {
         // if no errors in forms
         if($success) {
             // check if premium is selected
+            if(isset($premium)) {
+                $user = new PremiumMember($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
+            } else {
+                // create a new member object
+                $user = new Member($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
+            }
 
-            // create a new member object
-            $user = new Member($f3->get(fName), $f3->get('lName'), $f3->get('age'), $f3->get('gender'), $f3->get('phone'));
             $_SESSION['user'] = $user;
 
             // set session variables with form data
@@ -222,8 +226,8 @@ $f3->route('GET|POST /interests', function($f3) {
         // if no errors in forms
         if($success) {
             // set session variables with form data
-            $_SESSION['userInterestsIn'] = $f3->get('userIndoor');
-            $_SESSION['userInterestsOut'] = $f3->get('userOutdoor');
+            $user->setInDoorInterests($f3->get('userIndoor'));
+            $user->setOutDoorInterests($f3->get('userOutdoor'));
 
             // reroute to next page
             $f3->reroute('./profile-summary');
@@ -236,19 +240,9 @@ $f3->route('GET|POST /interests', function($f3) {
 
 // Define route for Summary Page
 $f3->route('GET|POST /profile-summary', function($f3) {
-    /*$f3->set('firstName', $_SESSION['fName']);
-    $f3->set('lastName', $_SESSION['lName']);
-    $f3->set('age', $_SESSION['age']);
-    $f3->set('phone', $_SESSION['phone']);
-    $f3->set('gender', $_SESSION['gender']);
 
-    $f3->set('email', $_SESSION['email']);
-    $f3->set('state', $_SESSION['state']);
-    $f3->set('seeking', $_SESSION['seeking']);
-    $f3->set('bio', $_SESSION['bio']);
-
-    $f3->set('interestsIn', $_SESSION['userInterestsIn']);
-    $f3->set('interestsOut', $_SESSION['userInterestsOut']);*/
+    $f3->set('interestsIn', $_SESSION['user']->getInDoorInterests());
+    $f3->set('interestsOut', $_SESSION['user']->getOutDoorInterests());
 
     $template = new Template();
     echo $template->render('pages/profile_summary.html');
