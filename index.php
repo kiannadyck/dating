@@ -21,6 +21,8 @@ $f3 = Base::instance();
 $dbObject = new DataObject();
 $dbh = $dbObject->connect();
 
+$_SESSION['dbObject'] = $dbObject;
+
 // Define a default route
 $f3->route('GET /', function() {
 
@@ -237,10 +239,56 @@ $f3->route('GET|POST /interests', function($f3) {
 $f3->route('GET|POST /profile-summary', function($f3) {
 
     $user = $_SESSION['user'];
+    $dbObject = $_SESSION['dbObject'];
+
+    $fname = $_SESSION['user']->getFname();
+    $lname = $_SESSION['user']->getLname();
+    $age = $_SESSION['user']->getAge();
+    $gender = $_SESSION['user']->getGender();
+    $phone = $_SESSION['user']->getPhone();
+    $email = $_SESSION['user']->getEmail();
+    $state = $_SESSION['user']->getState();
+    $seeking = $_SESSION['user']->getSeeking();
+    $bio = $_SESSION['user']->getBio();
 
     if($user instanceof PremiumMember) {
-        $f3->set('interestsIn', $_SESSION['user']->getInDoorInterests());
-        $f3->set('interestsOut', $_SESSION['user']->getOutDoorInterests());
+        $indoorInterests = $_SESSION['user']->getInDoorInterests();
+        $outdoorInterests = $_SESSION['user']->getOutDoorInterests();
+
+        $f3->set('interestsIn', $indoorInterests);
+        $f3->set('interestsOut', $outdoorInterests);
+
+        // create comma separated list for interests
+        if(isset($indoorInterests))
+        {
+            $allIndoor = implode(", ", $indoorInterests);
+        }
+        if(isset($outdoorInterests))
+        {
+            $allOutdoor  = implode(", ", $outdoorInterests);
+        }
+
+        if(!empty($allIndoor) && !empty($allOutdoor))
+        {
+            $allInterests = $allIndoor.", ".$allOutdoor;
+        } else if (!empty($allIndoor)) {
+            $allInterests = $allIndoor;
+        } else {
+            $allInterests = $allOutdoor;
+        }
+
+        // add member to database
+        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 1, $allInterests, NULL);
+        if($success) {
+            echo "Premium member successfully added";
+        }
+
+    } else {
+        // add member to database
+        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 0, NULL, NULL);
+        if($success) {
+            echo "Regular member successfully added";
+        }
     }
 
     $template = new Template();
