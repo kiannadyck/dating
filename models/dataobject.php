@@ -59,6 +59,10 @@
             }
         }
 
+        /**
+         * This method retrieves all the members currently stored in the database and returns the result.
+         * @return array
+         */
         function getMembers()
         {
             global $dbh;
@@ -78,6 +82,23 @@
             return $result;
         }
 
+        /**
+         * This method adds a new member to the database.
+         *
+         * @param $fname First name of member
+         * @param $lname Last name of member
+         * @param $age Age of member
+         * @param $phone Phone number of member
+         * @param $gender Gender of member
+         * @param $email Email of member
+         * @param $state State member lives in
+         * @param $seeking Gender of partner member is seeking romantically
+         * @param $bio Biography of member
+         * @param $isPremium Premium membership status of member
+         * @param $interests Interests of member
+         * @param $imagePath Path for an uploaded image
+         * @return bool
+         */
         function addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, $isPremium, $interests, $imagePath)
         {
             global $dbh;

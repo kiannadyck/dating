@@ -278,17 +278,13 @@ $f3->route('GET|POST /profile-summary', function($f3) {
         }
 
         // add member to database
-        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 1, $allInterests, NULL);
-        if($success) {
-            echo "Premium member successfully added";
-        }
+        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 1,
+            $allInterests, NULL);
 
     } else {
         // add member to database
-        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 0, NULL, NULL);
-        if($success) {
-            echo "Regular member successfully added";
-        }
+        $success = $dbObject->addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, 0,
+            NULL, NULL);
     }
 
     $template = new Template();

@@ -28,8 +28,8 @@ class Member
         {
             $this->fname = $fname;
             $this->lname = $lname;
-            $this->age = $age;
-            $this->gender = $gender;
+            $this->setAge($age);
+            $this->setGender($gender);
             $this->phone = $phone;
         }
 
@@ -82,10 +82,16 @@ class Member
 
         /**
          * This method sets the age of the member with the given value.
+         * If the given age is not a numeric value or is a negative number,
+         * the given age is considered bad input, and is replaced with null.
          * @param int $age The age of the member.
          */
         public function setAge($age)
         {
+            // oldest human on record lived for 122 years.
+            if(!is_numeric($age) || $age < 0 || $age > 122) {
+                $age = NULL;
+            }
             $this->age = $age;
         }
 
@@ -100,10 +106,16 @@ class Member
 
         /**
          * This method sets the gender of the member to the given value.
+         * If the given gender is not one of the available options, the
+         * given gender is considered bad input, and is replaced with null.
          * @param String $gender The gender of the member.
          */
         public function setGender($gender)
         {
+            $genders = array("Male", "Female");
+            if(!in_array($gender, $genders)) {
+                $gender = NULL;
+            }
             $this->gender = $gender;
         }
 
@@ -136,10 +148,15 @@ class Member
 
         /**
          * This method sets the email of the member to the given value.
+         * If the given email is not a valid email, the email value is set
+         * to null.
          * @param String $email The email of the member.
          */
         public function setEmail($email)
         {
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $email = NULL;
+            }
             $this->email = $email;
         }
 
@@ -172,10 +189,17 @@ class Member
 
         /**
          * This method sets the seeking of the member to the given value.
+         * If the given gender for seeking is not one of the available options, the
+         * given seeking gender is considered bad input, and is replaced with null.
          * @param String $seeking The gender the member interested in romantically.
          */
         public function setSeeking($seeking)
         {
+            $genders = array("Male", "Female");
+            if(!in_array($seeking, $genders)) {
+                $gender = NULL;
+            }
+
             $this->seeking = $seeking;
         }
 
