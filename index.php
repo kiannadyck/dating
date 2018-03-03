@@ -17,6 +17,10 @@ $f3 = Base::instance();
 // Set debug level 0 = off, 3 = max level
 //$f3->set('DEBUG', 3);
 
+// Connect to the database
+$dbObject = new DataObject();
+$dbh = $dbObject->connect();
+
 // Define a default route
 $f3->route('GET /', function() {
 
