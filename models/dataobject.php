@@ -64,15 +64,18 @@
             global $dbh;
 
             // 1. define the query
+            $sql = "SELECT * FROM members ORDER BY lname";
 
             // 2. prepare the statement
+            $statement = $dbh->prepare($sql);
 
-            // 3. bind parameters
+            // 3. execute the statement
+            $statement->execute();
 
-            // 4. execute the statement
+            // 4. return the result
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            // 5. return the result
-
+            return $result;
         }
 
         function addMember($fname, $lname, $age, $phone, $gender, $email, $state, $seeking, $bio, $isPremium, $interests, $imagePath)

@@ -1,0 +1,87 @@
+<!--
+    Kianna Dyck
+    01/19/2018
+    http://kdyck.greenriverdev.com/328/dating/admin
+    This page presents an admin user with a table containing all member information
+    for my dating application. Login functionality currently not provided.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Admin</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+          crossorigin="anonymous">
+    <!-- External CSS -->
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="mb-3">
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="./">K's Dating Website</a>
+</nav>
+
+<div class="container">
+    <h1>Membership</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>Seeking</th>
+            <th>Premium</th>
+            <th>Interests</th>
+        </tr>
+    <repeat group="{{ @members }}" value="{{ @member }}">
+        <tr>
+            <td>{{ @member['member_id'] }}</td>
+            <td>{{ @member['fname'] }} {{ @member['lname'] }}</td>
+            <td>{{ @member['age'] }}</td>
+            <td>{{ @member['phone'] }}</td>
+            <td>{{ @member['email'] }}</td>
+            <td>{{ @member['member_state'] }}</td>
+            <td>{{ @member['gender'] }}</td>
+            <td>{{ @member['seeking'] }}</td>
+            <td><input type="checkbox"
+                <check if="{{ @member['premium'] }} == 1">
+                    checked='checked'
+                </check>></td>
+            <td>{{ @member['interests'] }}</td>
+        </tr>
+
+    </repeat>
+    </table>
+
+</div> <!-- container -->
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<!-- Bootstrap JavaScript plugins -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

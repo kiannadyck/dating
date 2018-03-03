@@ -295,5 +295,18 @@ $f3->route('GET|POST /profile-summary', function($f3) {
     echo $template->render('pages/profile_summary.html');
 });
 
+$f3->route('GET /admin', function($f3) {
+    // get all members currently stored in database
+    $dbObject = $_SESSION['dbObject'];
+    $members = $dbObject->getMembers();
+    $f3->set('members', $members);
+
+    // load a template
+    $template = new Template();
+    echo $template->render('pages/admin.html');
+
+});
+
+
 // Run fat free
 $f3->run();
